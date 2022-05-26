@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">Digital Force</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Inversiones Digital Force</string>
+    <string name="nav_header_subtitle">Aplicación Administrativa</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Configuración</string>
+
+    <string name="drawer_home">Inicio</string>
+    <string name="drawer_entry">Ingresos</string>
+    <string name="drawer_sales">Ventas</string>
+    <string name="drawer_services">Servicios</string>
+    <string name="drawer_exits">Egresos</string>
+    <string name="drawer_expenses">Compras</string>
+</resources>

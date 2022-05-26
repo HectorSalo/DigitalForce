@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_24"
+        android:title="@string/drawer_home" />
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/drawer_entry">
+            <menu>
+                <item
+                    android:id="@+id/nav_sales"
+                    android:icon="@drawable/ic_sale_24"
+                    android:title="@string/drawer_sales" />
+                <item
+                    android:id="@+id/nav_services"
+                    android:icon="@drawable/ic_service_24"
+                    android:title="@string/drawer_services" />
+            </menu>
+        </item>
+    </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/drawer_exits">
+            <menu>
+                <item
+                    android:id="@+id/nav_expenses"
+                    android:icon="@drawable/ic_expense_24"
+                    android:title="@string/drawer_expenses" />
+            </menu>
+        </item>
+    </group>
+</menu>
