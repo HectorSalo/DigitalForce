@@ -22,4 +22,24 @@
         android:name="com.skysam.hchirinos.digitalforce.ui.services.ServicesFragment"
         android:label="@string/drawer_services"
         tools:layout="@layout/fragment_services" />
+    <fragment
+        android:id="@+id/nav_expenses"
+        android:name="com.skysam.hchirinos.digitalforce.ui.expenses.ExpensesFragment"
+        android:label="@string/drawer_expenses"
+        tools:layout="@layout/fragment_expenses" />
+    <fragment
+        android:id="@+id/nav_catalog"
+        android:name="com.skysam.hchirinos.digitalforce.ui.catalog.CatalogFragment"
+        android:label="@string/drawer_catalog"
+        tools:layout="@layout/fragment_catalog" />
+    <fragment
+        android:id="@+id/nav_stats"
+        android:name="com.skysam.hchirinos.digitalforce.ui.stats.StatsFragment"
+        android:label="@string/drawer_stats"
+        tools:layout="@layout/fragment_stats" />
+    <fragment
+        android:id="@+id/nav_customer"
+        android:name="com.skysam.hchirinos.digitalforce.ui.customer.CustomersFragment"
+        android:label="@string/drawer_customers"
+        tools:layout="@layout/fragment_customers" />
 </navigation>

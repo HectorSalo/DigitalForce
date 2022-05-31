@@ -13,4 +13,11 @@
     <string name="drawer_services">Servicios</string>
     <string name="drawer_exits">Egresos</string>
     <string name="drawer_expenses">Compras</string>
+    <string name="drawer_enterprise">Empresa</string>
+    <string name="drawer_catalog">Catálogo</string>
+    <string name="drawer_customers">Clientes</string>
+    <string name="drawer_stats">Estadísticas</string>
+
+    <!--Customers-->
+    <string name="list_customer_empty">No ha creado su primer Cliente</string>
 </resources>

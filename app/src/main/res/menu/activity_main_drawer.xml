@@ -35,4 +35,24 @@
             </menu>
         </item>
     </group>
+
+    <group android:checkableBehavior="single">
+        <item
+            android:title="@string/drawer_enterprise">
+            <menu>
+                <item
+                    android:id="@+id/nav_catalog"
+                    android:icon="@drawable/ic_catalog_24"
+                    android:title="@string/drawer_catalog" />
+                <item
+                    android:id="@+id/nav_customer"
+                    android:icon="@drawable/ic_customer_24"
+                    android:title="@string/drawer_customers" />
+                <item
+                    android:id="@+id/nav_stats"
+                    android:icon="@drawable/ic_stats_24"
+                    android:title="@string/drawer_stats" />
+            </menu>
+        </item>
+    </group>
 </menu>

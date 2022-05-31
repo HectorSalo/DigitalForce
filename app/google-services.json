@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "35441199960",
+    "project_id": "digitalforce-9ea7d",
+    "storage_bucket": "digitalforce-9ea7d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:35441199960:android:90668615c9b3253d56332d",
+        "android_client_info": {
+          "package_name": "com.skysam.hchirinos.digitalforce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "35441199960-j4osfeq0chg8m442h6dvdi19p7ppacg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_eoNItTOIGr1OhvX94BkgvxjhGkEmRtk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "35441199960-j4osfeq0chg8m442h6dvdi19p7ppacg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
