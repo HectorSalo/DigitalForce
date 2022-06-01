@@ -11,7 +11,6 @@ import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
 import com.skysam.hchirinos.digitalforce.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -31,12 +30,11 @@ class MainActivity : AppCompatActivity() {
         val navView: NavigationView = binding.navView
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment_content_main) as NavHostFragment
         val navController = navHostFragment.navController
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.nav_home, R.id.nav_sales, R.id.nav_services,
-                R.id.nav_expenses, R.id.nav_catalog, R.id.nav_stats
+                R.id.nav_expenses, R.id.nav_catalog, R.id.nav_customer,
+                R.id.nav_stats
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
@@ -44,7 +42,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
         return true
     }

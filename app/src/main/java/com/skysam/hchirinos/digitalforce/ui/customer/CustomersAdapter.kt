@@ -15,7 +15,8 @@ import com.skysam.hchirinos.digitalforce.dataClass.Customer
  * Created by Hector Chirinos on 30/05/2022.
  */
 
-class CustomersAdapter(private val customers: MutableList<Customer>): RecyclerView.Adapter<CustomersAdapter.ViewHolder>() {
+class CustomersAdapter(private val customers: MutableList<Customer>, private val onClick: OnClick):
+    RecyclerView.Adapter<CustomersAdapter.ViewHolder>() {
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomersAdapter.ViewHolder {
@@ -33,14 +34,12 @@ class CustomersAdapter(private val customers: MutableList<Customer>): RecyclerVi
 
         holder.menu.setOnClickListener {
             val popMenu = PopupMenu(context, holder.menu)
-            //popMenu.inflate(R.menu.menu_costumers_item)
+            popMenu.inflate(R.menu.menu_customer_item)
             popMenu.setOnMenuItemClickListener {
                 when(it.itemId) {
-                    /*R.id.menu_delete_location-> onClick.deleteLocation(item)
+                    R.id.menu_delete_location-> onClick.deleteLocation(item)
                     R.id.menu_edit-> onClick.edit(item)
                     R.id.menu_delete-> onClick.delete(item)
-                    R.id.menu_add_refund -> onClick.addRefund(item)
-                    R.id.menu_view_documents -> onClick.viewDocuments(item)*/
                 }
                 false
             }

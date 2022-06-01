@@ -18,6 +18,37 @@
     <string name="drawer_customers">Clientes</string>
     <string name="drawer_stats">Estadísticas</string>
 
+    <!--General-->
+    <string name="text_save">Guardar</string>
+    <string name="text_cancel">Cancelar</string>
+    <string name="text_totalize">Totalizar</string>
+    <string name="text_exit">Salir</string>
+    <string name="text_close">Cerrar</string>
+    <string name="text_delete">Eliminar</string>
+    <string name="text_update">Actualizar</string>
+    <string name="error_field_empty">Campo vacío</string>
+
+    <!--Dialogs Common-->
+    <string name="title_confirmation_dialog">Confirmar</string>
+    <string name="msg_exit_dialog">Se perderá toda la información.\n¿Desea salir?</string>
+    <string name="msg_delete_dialog">¿Desea eliminar esta información?</string>
+
     <!--Customers-->
     <string name="list_customer_empty">No ha creado su primer Cliente</string>
+    <string name="title_add_customer">Agregar cliente</string>
+    <string name="title_edit_customer">Editar cliente</string>
+    <string name="title_details_customer">Detalles cliente</string>
+    <string name="text_name_customer">Razón Social</string>
+    <string name="text_id_customer">RIF</string>
+    <string name="text_location">Sucursal</string>
+    <string name="text_locations">Sucursales</string>
+    <string name="error_customer_exists">Este cliente ya existe</string>
+    <string name="error_identifier_exists">Este RIF está almacenado con otro cliente</string>
+    <string name="error_location_exists">Sucursal ya existe para este cliente</string>
+    <string name="text_add_location">Nueva sucursal</string>
+    <string name="text_delete_location">Eliminar sucursal</string>
+    <string name="text_edit_customer">Editar cliente</string>
+    <string name="text_delete_customer">Eliminar cliente</string>
+    <string name="title_delete_locations">Seleccione las sucursales a eliminar</string>
+    <string name="error_delete_all_locations">No puede eliminar todas las sucursales</string>
 </resources>

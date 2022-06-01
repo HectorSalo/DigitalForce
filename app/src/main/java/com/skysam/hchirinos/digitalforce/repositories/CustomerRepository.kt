@@ -2,10 +2,7 @@ package com.skysam.hchirinos.digitalforce.repositories
 
 import android.content.ContentValues
 import android.util.Log
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.MetadataChanges
-import com.google.firebase.firestore.Query
+import com.google.firebase.firestore.*
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.common.Constants
 import com.skysam.hchirinos.digitalforce.dataClass.Customer
@@ -68,5 +65,28 @@ object CustomerRepository {
                 }
             awaitClose { request.remove() }
         }
+    }
+
+    fun updateCustomer(customer: Customer) {
+        val data: Map<String, Any> = hashMapOf(
+            Constants.NAME to customer.name,
+            Constants.TYPE_IDENTIFIER to customer.typeIdentifier,
+            Constants.NUMBER_IDENTIFIER to customer.numberIdentifier,
+            Constants.LOCATIONS to customer.locations
+        )
+        getInstance().document(customer.id)
+            .update(data)
+    }
+
+    fun deleteLocations(id: String, locations: MutableList<String>) {
+        for (loc in locations) {
+            getInstance().document(id)
+                .update(Constants.LOCATIONS, FieldValue.arrayRemove(loc))
+        }
+    }
+
+    fun deleteCustomer(customer: Customer) {
+        getInstance().document(customer.id)
+            .delete()
     }
 }
