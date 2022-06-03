@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/drawable/ic_catalog_24.xml" value="0.356" />
+        <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/drawable/ic_code_24.xml" value="0.356" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/drawable/ic_home_24.xml" value="0.356" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/drawable/ic_sale_24.xml" value="0.356" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/drawable/side_nav_bar.xml" value="0.356" />
@@ -11,14 +13,19 @@
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/content_main.xml" value="0.3546875" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/dialog_add_customer.xml" value="0.3546875" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/dialog_add_cutomer.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/fragment_about.xml" value="0.340625" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/fragment_customers.xml" value="0.3546875" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/fragment_expenses.xml" value="0.3546875" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/fragment_home.xml" value="0.3546875" />
+        <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/fragment_settings.xml" value="0.340625" />
+        <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/layout_catalog_item.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/layout_customer_item.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/layout_spinner.xml" value="0.3536458333333333" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/nav_header_main.xml" value="0.3546875" />
+        <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/layout/settings_activity.xml" value="0.3546875" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/menu/activity_main_drawer.xml" value="0.3546875" />
         <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/menu/menu_customer_item.xml" value="0.3536458333333333" />
+        <entry key="..\:/Users/Chirinos/AndroidStudioProjects/DigitalForce/app/src/main/res/xml/root_preferences.xml" value="0.3546875" />
       </map>
     </option>
   </component>

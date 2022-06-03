@@ -10,10 +10,6 @@ import com.skysam.hchirinos.digitalforce.R
 
 class ExpensesFragment : Fragment() {
 
-    companion object {
-        fun newInstance() = ExpensesFragment()
-    }
-
     private lateinit var viewModel: ExpensesViewModel
 
     override fun onCreateView(

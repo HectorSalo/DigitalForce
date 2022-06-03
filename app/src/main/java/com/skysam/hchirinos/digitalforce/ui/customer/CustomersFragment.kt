@@ -2,9 +2,7 @@ package com.skysam.hchirinos.digitalforce.ui.customer
 
 import android.content.DialogInterface
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
@@ -76,6 +74,12 @@ class CustomersFragment : Fragment(), OnClick {
     override fun onPause() {
         super.onPause()
         binding.floatingActionButton.hide()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+        //inflater.inflate(R.menu.main, menu)
     }
 
     private fun loadViewModel() {

@@ -51,4 +51,10 @@
     <string name="text_delete_customer">Eliminar cliente</string>
     <string name="title_delete_locations">Seleccione las sucursales a eliminar</string>
     <string name="error_delete_all_locations">No puede eliminar todas las sucursales</string>
+
+    <!--Settings -->
+    <string name="text_about">Información de la App</string>
+    <string name="about_title">Desarrollado por&#8230;</string>
+    <string name="version_name">Versión %1$s</string>
+
 </resources>

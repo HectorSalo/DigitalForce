@@ -13,5 +13,7 @@
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="colorPrimaryContainer">@color/red_dark</item>
+
+        <item name="android:textColor">#FFCAC4D0</item>
     </style>
 </resources>
