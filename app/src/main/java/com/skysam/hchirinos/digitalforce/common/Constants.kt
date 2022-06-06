@@ -15,4 +15,9 @@ object Constants {
     const val NUMBER_IDENTIFIER = "numberId"
     const val LOCATION = "location"
     const val LOCATIONS = "locations"
+
+    const val CATALOG = "catalog"
+    const val CATALOG_DEMO = "catalogDemo"
+    const val PRICE = "price"
+    const val IMAGE = "image"
 }

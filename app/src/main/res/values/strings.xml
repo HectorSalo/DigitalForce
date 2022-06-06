@@ -52,6 +52,20 @@
     <string name="title_delete_locations">Seleccione las sucursales a eliminar</string>
     <string name="error_delete_all_locations">No puede eliminar todas las sucursales</string>
 
+    <!--Catalog-->
+    <string name="text_product">Producto</string>
+    <string name="text_price">Precio</string>
+    <string name="text_sell">Vender</string>
+    <string name="text_share">Compartir</string>
+    <string name="list_catalog_empty">Sin Productos en el Catálogo</string>
+    <string name="title_add_producto_dialog">Crear producto</string>
+    <string name="title_edit_producto_dialog">Editar %1$s</string>
+    <string name="error_name_exists">Nombre existente</string>
+    <string name="text_progress_load_image">Cargando imagen %1$s</string>
+    <string name="error_upload_image">Error al subir imagen</string>
+    <string name="txt_error_permiso_lectura">Error de permisos de lectura</string>
+    <string name="error_image_notfound">Imagen/archivo no encontrado.</string>
+
     <!--Settings -->
     <string name="text_about">Información de la App</string>
     <string name="about_title">Desarrollado por&#8230;</string>
