@@ -9,6 +9,7 @@ import com.google.firebase.firestore.Query
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.common.Constants
 import com.skysam.hchirinos.digitalforce.dataClass.Product
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -17,6 +18,8 @@ import kotlinx.coroutines.flow.callbackFlow
  * Created by Hector Chirinos on 05/06/2022.
  */
 
+
+@OptIn(ExperimentalCoroutinesApi::class)
 object CatalogRepository {
  private val PATH = when(Classes.getEnviroment()) {
   Constants.DEMO -> Constants.CATALOG_DEMO

@@ -33,6 +33,13 @@
     <string name="msg_exit_dialog">Se perderá toda la información.\n¿Desea salir?</string>
     <string name="msg_delete_dialog">¿Desea eliminar esta información?</string>
 
+    <!--Home-->
+    <string name="text_new">Nuevo</string>
+    <string name="text_sale">Venta</string>
+    <string name="text_service">Servicio</string>
+    <string name="text_expense">Compra</string>
+    <string name="text_customer">Cliente</string>
+
     <!--Customers-->
     <string name="list_customer_empty">No ha creado su primer Cliente</string>
     <string name="title_add_customer">Agregar cliente</string>

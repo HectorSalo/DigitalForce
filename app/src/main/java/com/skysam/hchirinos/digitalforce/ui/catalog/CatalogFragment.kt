@@ -40,6 +40,11 @@ class CatalogFragment : Fragment() {
             layoutManager = wrapLayoutManager
         }
 
+        binding.fab.setOnClickListener {
+            val addProductDialog = AddProductDialog()
+            addProductDialog.show(requireActivity().supportFragmentManager, tag)
+        }
+
         loadViewModel()
     }
 
