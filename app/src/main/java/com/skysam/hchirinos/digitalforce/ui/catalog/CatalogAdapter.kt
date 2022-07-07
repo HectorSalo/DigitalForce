@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.google.android.material.card.MaterialCardView
 import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.dataClass.Product
@@ -17,14 +17,14 @@ import com.skysam.hchirinos.digitalforce.dataClass.Product
  * Created by Hector Chirinos on 05/06/2022.
  */
 
-class CatalogAdapter(private val products: MutableList<Product>): RecyclerView.Adapter<CatalogAdapter.ViewHolder>() {
+class CatalogAdapter(private val products: MutableList<Product>, private val onClick: OnClick): RecyclerView.Adapter<CatalogAdapter.ViewHolder>() {
     private lateinit var context: Context
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.tv_name)
         val price: TextView = view.findViewById(R.id.tv_price)
         val image: ImageView = view.findViewById(R.id.image)
-        val card: MaterialCardView = view.findViewById(R.id.card)
+        val menu: TextView = view.findViewById(R.id.tv_menu)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -44,14 +44,17 @@ class CatalogAdapter(private val products: MutableList<Product>): RecyclerView.A
             .placeholder(R.drawable.ic_image_64)
             .into(holder.image)
 
-        //holder.card.isChecked = listToDeleted.contains(item.id)
-
-        holder.card.setOnClickListener {
-
-        }
-        holder.card.setOnLongClickListener {
-            holder.card.isChecked = !holder.card.isChecked
-            true
+        holder.menu.setOnClickListener {
+            val popMenu = PopupMenu(context, holder.menu)
+            popMenu.inflate(R.menu.menu_catalog_item)
+            popMenu.setOnMenuItemClickListener {
+                when(it.itemId) {
+                    R.id.menu_edit-> onClick.edit(item)
+                    R.id.menu_delete-> onClick.delete(item)
+                }
+                false
+            }
+            popMenu.show()
         }
     }
 

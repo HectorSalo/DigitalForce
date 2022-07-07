@@ -3,7 +3,9 @@
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:clickable="false"
+    android:focusable="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -80,5 +82,16 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_menu"
+        android:layout_width="35dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:paddingEnd="16dp"
+        android:text="&#8942;"
+        android:textSize="18sp"/>
 
 </com.google.android.material.card.MaterialCardView>

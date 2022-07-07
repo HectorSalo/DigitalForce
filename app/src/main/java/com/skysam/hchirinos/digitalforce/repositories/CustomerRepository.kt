@@ -6,7 +6,6 @@ import com.google.firebase.firestore.*
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.common.Constants
 import com.skysam.hchirinos.digitalforce.dataClass.Customer
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -15,7 +14,6 @@ import kotlinx.coroutines.flow.callbackFlow
  * Created by Hector Chirinos on 30/05/2022.
  */
 
-@OptIn(ExperimentalCoroutinesApi::class)
 object CustomerRepository {
     private val PATH = when(Classes.getEnviroment()) {
         Constants.DEMO -> Constants.CUSTOMERS_DEMO

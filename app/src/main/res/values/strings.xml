@@ -27,6 +27,8 @@
     <string name="text_delete">Eliminar</string>
     <string name="text_update">Actualizar</string>
     <string name="error_field_empty">Campo vacío</string>
+    <string name="error_data">Error en data</string>
+    <string name="text_edit">Editar</string>
 
     <!--Dialogs Common-->
     <string name="title_confirmation_dialog">Confirmar</string>

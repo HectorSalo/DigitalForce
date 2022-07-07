@@ -30,8 +30,6 @@ class CustomersAdapter(private val customers: MutableList<Customer>, private val
         val item = customers[position]
         holder.name.text = item.name
 
-        //holder.card.setOnClickListener { onClick.viewCostumer(item) }
-
         holder.menu.setOnClickListener {
             val popMenu = PopupMenu(context, holder.menu)
             popMenu.inflate(R.menu.menu_customer_item)
@@ -51,7 +49,6 @@ class CustomersAdapter(private val customers: MutableList<Customer>, private val
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.tv_name)
-        val card: MaterialCardView = view.findViewById(R.id.card)
         val menu: TextView = view.findViewById(R.id.tv_menu)
     }
 }

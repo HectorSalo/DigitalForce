@@ -30,11 +30,12 @@ import com.skysam.hchirinos.digitalforce.databinding.DialogAddProductBinding
 class AddProductDialog: DialogFragment() {
     private var _binding: DialogAddProductBinding? = null
     private val binding get() = _binding!!
-    //private val viewModel: MainViewModel by activityViewModels()
+    private val viewModel: CatalogViewModel by activityViewModels()
     private lateinit var buttonPositive: Button
     private lateinit var buttonNegative: Button
     private var image: String? = null
     private lateinit var name: String
+    private var price = 0.0
     private val products = mutableListOf<Product>()
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
@@ -54,12 +55,12 @@ class AddProductDialog: DialogFragment() {
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         _binding = DialogAddProductBinding.inflate(layoutInflater)
 
-        /*viewModel.products.observe(this.requireActivity()) {
+        viewModel.products.observe(this.requireActivity()) {
             if (_binding != null) {
                 products.clear()
                 products.addAll(it)
             }
-        }*/
+        }
 
         binding.etName.doAfterTextChanged { binding.tfName.error = null }
 
@@ -85,6 +86,7 @@ class AddProductDialog: DialogFragment() {
     private fun validateData() {
         binding.tfName.error = null
         name = binding.etName.text.toString().trim()
+        val priceS = binding.etPrice.text.toString().trim()
         if (name.isEmpty()) {
             binding.tfName.error = getString(R.string.error_field_empty)
             binding.etName.requestFocus()
@@ -97,13 +99,14 @@ class AddProductDialog: DialogFragment() {
                 return
             }
         }
+        if (priceS.isNotEmpty()) price = priceS.toDouble()
         Classes.close(binding.root)
         buttonNegative.isEnabled = false
         buttonPositive.isEnabled = false
         binding.ivImage.setOnClickListener(null)
         dialog?.setCancelable(false)
 
-        /*if (image != null) {
+        if (image != null) {
             viewModel.uploadImage(Uri.parse(image)).observe(this.requireActivity()) {
                 if (_binding != null) {
                     if (it.equals(getString(R.string.error_data))) {
@@ -129,17 +132,19 @@ class AddProductDialog: DialogFragment() {
         } else {
             image = ""
             saveProduct()
-        }*/
+        }
     }
 
     private fun saveProduct() {
-        /*val product = Product(
-            Constants.ID,
+        val priceF = if (price > 0) price else 1.0
+        val product = Product(
+            "",
             name,
+            priceF,
             image = image!!
         )
         viewModel.saveProduct(product)
-        dismiss()*/
+        dismiss()
     }
 
     private fun requestPermission() {
