@@ -29,6 +29,7 @@
     <string name="error_field_empty">Campo vacío</string>
     <string name="error_data">Error en data</string>
     <string name="text_edit">Editar</string>
+    <string name="text_date">Fecha</string>
 
     <!--Dialogs Common-->
     <string name="title_confirmation_dialog">Confirmar</string>
@@ -74,6 +75,11 @@
     <string name="error_upload_image">Error al subir imagen</string>
     <string name="txt_error_permiso_lectura">Error de permisos de lectura</string>
     <string name="error_image_notfound">Imagen/archivo no encontrado.</string>
+    <string name="error_price_zero">Precio debe ser mayor a cero</string>
+    <string name="title_share_dialog">Compartir con</string>
+
+    <!--Expense-->
+    <string name="list_expense_empty">No ha realizado su primera Compra</string>
 
     <!--Settings -->
     <string name="text_about">Información de la App</string>

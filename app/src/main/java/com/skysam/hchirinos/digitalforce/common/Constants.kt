@@ -21,4 +21,9 @@ object Constants {
     const val PRICE = "price"
     const val QUANTITY = "quantity"
     const val IMAGE = "image"
+
+    const val EXPENSES = "expenses"
+    const val EXPENSES_DEMO = "expensesDemo"
+    const val DATE = "date"
+    const val PRODUCTS = "products"
 }

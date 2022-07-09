@@ -1,6 +1,7 @@
 package com.skysam.hchirinos.digitalforce.ui.catalog
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,7 @@ import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.google.android.material.button.MaterialButton
 import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.dataClass.Product
@@ -25,6 +27,8 @@ class CatalogAdapter(private val products: MutableList<Product>, private val onC
         val price: TextView = view.findViewById(R.id.tv_price)
         val image: ImageView = view.findViewById(R.id.image)
         val menu: TextView = view.findViewById(R.id.tv_menu)
+        val share: MaterialButton = view.findViewById(R.id.btn_share)
+        val sell: MaterialButton = view.findViewById(R.id.btn_sell)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -55,6 +59,19 @@ class CatalogAdapter(private val products: MutableList<Product>, private val onC
                 false
             }
             popMenu.show()
+        }
+
+        holder.share.setOnClickListener {
+            val emojiPin = String(Character.toChars(0x1F4CC))
+            val selection = StringBuilder()
+            selection.append("Producto disponible: ")
+            selection.append("\n\n").append("$emojiPin ${item.name}.")
+            selection.append("\n").append("Precio: \$${Classes.convertDoubleToString(item.price)}")
+
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type = "text/plain"
+            intent.putExtra(Intent.EXTRA_TEXT, selection.toString())
+            context.startActivity(Intent.createChooser(intent, context.getString(R.string.title_share_dialog)))
         }
     }
 

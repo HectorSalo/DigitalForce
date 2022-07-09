@@ -20,6 +20,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.widget.doAfterTextChanged
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import com.bumptech.glide.Glide
 import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.dataClass.Product
@@ -27,10 +28,10 @@ import com.skysam.hchirinos.digitalforce.databinding.DialogAddProductBinding
 import java.util.*
 
 /**
- * Created by Hector Chirinos on 06/06/2022.
+ * Created by Hector Chirinos on 07/07/2022.
  */
 
-class AddProductDialog: DialogFragment(), TextWatcher {
+class UpdateProductDialog: DialogFragment(), TextWatcher {
     private var _binding: DialogAddProductBinding? = null
     private val binding get() = _binding!!
     private val viewModel: CatalogViewModel by activityViewModels()
@@ -40,6 +41,7 @@ class AddProductDialog: DialogFragment(), TextWatcher {
     private lateinit var name: String
     private var price = 0.0
     private val products = mutableListOf<Product>()
+    private lateinit var product: Product
 
     private val requestPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
         if (isGranted) {
@@ -65,13 +67,29 @@ class AddProductDialog: DialogFragment(), TextWatcher {
             }
         }
 
+        viewModel.productToEdit.observe(this.requireActivity()) {
+            if (_binding != null) {
+                product = it
+                name = product.name
+                image = product.image
+                price = product.price
+                binding.etName.setText(it.name)
+                binding.etPrice.setText(Classes.convertDoubleToString(it.price))
+                Glide.with(requireContext())
+                    .load(it.image)
+                    .centerCrop()
+                    .placeholder(R.drawable.ic_add_a_photo_232)
+                    .into(binding.ivImage)
+            }
+        }
+
         binding.etName.doAfterTextChanged { binding.tfName.error = null }
         binding.etPrice.addTextChangedListener(this)
 
         val builder = AlertDialog.Builder(requireActivity())
-        builder.setTitle(getString(R.string.title_add_producto_dialog))
+        builder.setTitle(getString(R.string.title_edit_producto_dialog, product.name))
             .setView(binding.root)
-            .setPositiveButton(R.string.text_save, null)
+            .setPositiveButton(R.string.text_update, null)
             .setNegativeButton(R.string.text_cancel, null)
 
         val dialog = builder.create()
@@ -97,7 +115,7 @@ class AddProductDialog: DialogFragment(), TextWatcher {
             return
         }
         for (prod in products) {
-            if (prod.name.equals(name, true)) {
+            if (prod.name.equals(name, true) && prod.name != product.name) {
                 binding.tfName.error = getString(R.string.error_name_exists)
                 binding.etName.requestFocus()
                 return
@@ -121,7 +139,7 @@ class AddProductDialog: DialogFragment(), TextWatcher {
         binding.ivImage.setOnClickListener(null)
         dialog?.setCancelable(false)
 
-        if (image != null) {
+        if (image != null && image != product.image) {
             viewModel.uploadImage(Uri.parse(image)).observe(this.requireActivity()) {
                 if (_binding != null) {
                     if (it.equals(getString(R.string.error_data))) {
@@ -134,8 +152,9 @@ class AddProductDialog: DialogFragment(), TextWatcher {
                         Toast.makeText(requireContext(), getString(R.string.error_upload_image), Toast.LENGTH_LONG).show()
                     } else {
                         if (it.contains("https")) {
+                            if (product.image.isNotEmpty()) viewModel.deleteOldImage(product.image)
                             image = it
-                            saveProduct()
+                            updateProduct()
                         } else {
                             binding.progressBar.visibility = View.VISIBLE
                             binding.tvProgress.visibility = View.VISIBLE
@@ -145,19 +164,20 @@ class AddProductDialog: DialogFragment(), TextWatcher {
                 }
             }
         } else {
-            image = ""
-            saveProduct()
+            updateProduct()
         }
     }
 
-    private fun saveProduct() {
-        val product = Product(
-            "",
-            name,
-            price,
-            image = image!!
-        )
-        viewModel.saveProduct(product)
+    private fun updateProduct() {
+        if (name != product.name || image != product.image || price != product.price) {
+            val product = Product(
+                product.id,
+                name,
+                price,
+                image = image!!
+            )
+            viewModel.updateProduct(product)
+        }
         dismiss()
     }
 

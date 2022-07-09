@@ -39,6 +39,16 @@ class CatalogFragment : Fragment(), OnClick {
             setHasFixedSize(true)
             adapter = catalogAdapter
             layoutManager = wrapLayoutManager
+            addOnScrollListener(object: RecyclerView.OnScrollListener() {
+                override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                    if (dy > 0) {
+                        binding.fab.hide()
+                    } else {
+                        binding.fab.show()
+                    }
+                    super.onScrolled(recyclerView, dx, dy)
+                }
+            })
         }
 
         binding.fab.setOnClickListener {
@@ -86,6 +96,8 @@ class CatalogFragment : Fragment(), OnClick {
     }
 
     override fun edit(product: Product) {
-        TODO("Not yet implemented")
+        viewModel.productToEdit(product)
+        val dialog = UpdateProductDialog()
+        dialog.show(requireActivity().supportFragmentManager, tag)
     }
 }

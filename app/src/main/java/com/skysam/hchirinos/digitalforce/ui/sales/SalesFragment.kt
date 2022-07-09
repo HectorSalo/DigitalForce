@@ -1,9 +1,10 @@
 package com.skysam.hchirinos.digitalforce.ui.sales
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.databinding.FragmentSalesBinding
 
 class SalesFragment : Fragment() {
@@ -17,18 +18,11 @@ class SalesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentSalesBinding.inflate(inflater, container, false)
-        setHasOptionsMenu(true)
         return binding.root
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        menu.clear()
-        inflater.inflate(R.menu.main, menu)
     }
 }
