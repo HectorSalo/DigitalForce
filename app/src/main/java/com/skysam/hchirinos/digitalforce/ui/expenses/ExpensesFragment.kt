@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.dataClass.Expense
 import com.skysam.hchirinos.digitalforce.databinding.FragmentExpensesBinding
 
-class ExpensesFragment : Fragment() {
+class ExpensesFragment : Fragment(), OnClick {
 
     private var _binding: FragmentExpensesBinding? = null
     private val binding get() = _binding!!
@@ -28,7 +30,7 @@ class ExpensesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        adapterExpense = ExpensesAdapter(expenses)
+        adapterExpense = ExpensesAdapter(expenses, this)
         binding.rvExpenses.apply {
             setHasFixedSize(true)
             adapter = adapterExpense
@@ -43,6 +45,12 @@ class ExpensesFragment : Fragment() {
                 }
             })
         }
+
+        binding.fab.setOnClickListener {
+            val dialog = AddExpenseDialog()
+            dialog.show(requireActivity().supportFragmentManager, tag)
+        }
+
         loadViewModel()
     }
 
@@ -62,6 +70,27 @@ class ExpensesFragment : Fragment() {
                 binding.progressBar.visibility = View.GONE
             }
         }
+    }
+
+    override fun viewExpense(expense: Expense) {
+
+    }
+
+    override fun edit(expense: Expense) {
+
+    }
+
+    override fun delete(expense: Expense) {
+        val builder = AlertDialog.Builder(requireActivity())
+        builder.setTitle(getString(R.string.title_confirmation_dialog))
+            .setMessage(getString(R.string.msg_delete_dialog))
+            .setPositiveButton(R.string.text_delete) { _, _ ->
+                viewModel.deleteExpense(expense)
+            }
+            .setNegativeButton(R.string.text_cancel, null)
+
+        val dialog = builder.create()
+        dialog.show()
     }
 
 }

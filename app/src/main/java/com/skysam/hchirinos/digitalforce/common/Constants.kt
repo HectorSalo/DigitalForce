@@ -26,4 +26,5 @@ object Constants {
     const val EXPENSES_DEMO = "expensesDemo"
     const val DATE = "date"
     const val PRODUCTS = "products"
+    const val RATE = "rate"
 }

@@ -7,4 +7,6 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="size_image_dialog_add_product">240dp</dimen>
+    <dimen name="size_btn_item_list">48dp</dimen>
+
 </resources>

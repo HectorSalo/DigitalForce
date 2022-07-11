@@ -59,7 +59,8 @@ object ExpensesRepository {
                             expense.id,
                             listProducts,
                             expense.getDouble(Constants.PRICE)!!,
-                            expense.getDate(Constants.DATE)!!
+                            expense.getDate(Constants.DATE)!!,
+                            expense.getDouble(Constants.RATE)!!
                         )
                         expenses.add(expenseNew)
                     }
@@ -67,5 +68,20 @@ object ExpensesRepository {
                 }
             awaitClose { request.remove() }
         }
+    }
+
+    fun addExpense(expense: Expense) {
+        val data = hashMapOf(
+            Constants.PRODUCTS to expense.listProducts,
+            Constants.PRICE to expense.total,
+            Constants.DATE to expense.date,
+            Constants.RATE to expense.rate
+        )
+        getInstance().add(data)
+    }
+
+    fun deleteExpense(expense: Expense) {
+        getInstance().document(expense.id)
+            .delete()
     }
 }

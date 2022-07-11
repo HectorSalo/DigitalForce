@@ -10,5 +10,6 @@ data class Expense(
  val id: String,
  var listProducts: MutableList<Product>,
  var total: Double,
- var date: Date
+ var date: Date,
+ var rate: Double
 )

@@ -17,7 +17,8 @@ import java.text.DateFormat
  * Created by Hector Chirinos on 09/07/2022.
  */
 
-class ExpensesAdapter(private val expenses: MutableList<Expense>): RecyclerView.Adapter<ExpensesAdapter.ViewHolder>() {
+class ExpensesAdapter(private val expenses: MutableList<Expense>, private val onClick: OnClick):
+    RecyclerView.Adapter<ExpensesAdapter.ViewHolder>() {
     private lateinit var context: Context
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExpensesAdapter.ViewHolder {
@@ -29,12 +30,12 @@ class ExpensesAdapter(private val expenses: MutableList<Expense>): RecyclerView.
 
     override fun onBindViewHolder(holder: ExpensesAdapter.ViewHolder, position: Int) {
         val item = expenses[position]
-        //holder.name.text = item.nameSupplier
+        holder.name.text = "$${Classes.convertDoubleToString(item.total)}"
         holder.price.text = Classes.convertDoubleToString(item.total)
         holder.date.text = DateFormat.getDateInstance().format(item.date)
 
         holder.card.setOnClickListener {
-           /* val popMenu = PopupMenu(context, holder.card)
+            val popMenu = PopupMenu(context, holder.card)
             popMenu.inflate(R.menu.menu_expenses_item)
             popMenu.setOnMenuItemClickListener {
                 when(it.itemId) {
@@ -44,14 +45,14 @@ class ExpensesAdapter(private val expenses: MutableList<Expense>): RecyclerView.
                 }
                 false
             }
-            popMenu.show()*/
+            popMenu.show()
         }
     }
 
     override fun getItemCount(): Int = expenses.size
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val name: TextView = view.findViewById(R.id.tv_name)
+        val name: TextView = view.findViewById(R.id.tv_expense)
         val price: TextView = view.findViewById(R.id.tv_price)
         val date: TextView = view.findViewById(R.id.tv_date)
         val card: MaterialCardView = view.findViewById(R.id.card)
