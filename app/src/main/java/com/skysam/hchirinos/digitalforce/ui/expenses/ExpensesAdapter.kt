@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.PopupMenu
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
 import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.dataClass.Expense
@@ -31,11 +30,11 @@ class ExpensesAdapter(private val expenses: MutableList<Expense>, private val on
     override fun onBindViewHolder(holder: ExpensesAdapter.ViewHolder, position: Int) {
         val item = expenses[position]
         holder.name.text = "$${Classes.convertDoubleToString(item.total)}"
-        holder.price.text = Classes.convertDoubleToString(item.total)
+        holder.items.text = context.getString(R.string.text_number_items, item.listProducts.size.toString())
         holder.date.text = DateFormat.getDateInstance().format(item.date)
 
-        holder.card.setOnClickListener {
-            val popMenu = PopupMenu(context, holder.card)
+        holder.menu.setOnClickListener {
+            val popMenu = PopupMenu(context, holder.menu)
             popMenu.inflate(R.menu.menu_expenses_item)
             popMenu.setOnMenuItemClickListener {
                 when(it.itemId) {
@@ -53,8 +52,8 @@ class ExpensesAdapter(private val expenses: MutableList<Expense>, private val on
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val name: TextView = view.findViewById(R.id.tv_expense)
-        val price: TextView = view.findViewById(R.id.tv_price)
+        val items: TextView = view.findViewById(R.id.tv_items)
         val date: TextView = view.findViewById(R.id.tv_date)
-        val card: MaterialCardView = view.findViewById(R.id.card)
+        val menu: TextView = view.findViewById(R.id.tv_menu)
     }
 }

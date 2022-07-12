@@ -10,7 +10,7 @@
         <item name="colorSecondaryVariant">@color/red_dark</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="colorPrimaryContainer">@color/red_light</item>
     </style>
@@ -23,4 +23,10 @@
     <style name="Theme.DigitalForce.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.DigitalForce.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/idf2</item>
+        <item name="postSplashScreenTheme">@style/Theme.DigitalForce</item>
+    </style>
 </resources>

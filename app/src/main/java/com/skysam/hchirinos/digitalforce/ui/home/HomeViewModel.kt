@@ -3,11 +3,10 @@ package com.skysam.hchirinos.digitalforce.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.asLiveData
+import com.skysam.hchirinos.digitalforce.dataClass.Expense
+import com.skysam.hchirinos.digitalforce.repositories.ExpensesRepository
 
 class HomeViewModel : ViewModel() {
-
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is home Fragment"
-    }
-    val text: LiveData<String> = _text
+    val expenses: LiveData<MutableList<Expense>> = ExpensesRepository.getExpenses().asLiveData()
 }

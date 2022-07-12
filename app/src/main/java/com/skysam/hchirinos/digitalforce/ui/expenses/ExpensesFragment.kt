@@ -73,7 +73,8 @@ class ExpensesFragment : Fragment(), OnClick {
     }
 
     override fun viewExpense(expense: Expense) {
-
+        val dialog = ViewExpenseDialog(expense)
+        dialog.show(requireActivity().supportFragmentManager, tag)
     }
 
     override fun edit(expense: Expense) {

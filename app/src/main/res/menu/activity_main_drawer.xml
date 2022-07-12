@@ -10,7 +10,8 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:title="@string/drawer_entry">
+            android:title="@string/drawer_entry"
+            android:visible="false">
             <menu>
                 <item
                     android:id="@+id/nav_sales"
@@ -51,7 +52,8 @@
                 <item
                     android:id="@+id/nav_stats"
                     android:icon="@drawable/ic_stats_24"
-                    android:title="@string/drawer_stats" />
+                    android:title="@string/drawer_stats"
+                    android:visible="false"/>
             </menu>
         </item>
     </group>
