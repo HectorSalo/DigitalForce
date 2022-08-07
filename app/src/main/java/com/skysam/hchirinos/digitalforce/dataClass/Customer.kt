@@ -9,5 +9,6 @@ data class Customer(
  var name: String,
  var typeIdentifier: String,
  var numberIdentifier: Int,
- var locations: MutableList<String>
+ var locations: MutableList<String>,
+ var products: MutableList<Product>
 )

@@ -6,6 +6,7 @@ import com.google.firebase.firestore.*
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.common.Constants
 import com.skysam.hchirinos.digitalforce.dataClass.Customer
+import com.skysam.hchirinos.digitalforce.dataClass.Product
 import kotlinx.coroutines.channels.awaitClose
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.callbackFlow
@@ -52,12 +53,18 @@ object CustomerRepository {
                             @Suppress("UNCHECKED_CAST")
                             listLocation = doc.get(Constants.LOCATIONS) as MutableList<String>
                         }
+                        var listProducts = mutableListOf<Product>()
+                        if (doc.get(Constants.LOCATIONS) != null) {
+                            @Suppress("UNCHECKED_CAST")
+                            listProducts = doc.get(Constants.PRODUCTS) as MutableList<Product>
+                        }
                         val customer = Customer(
                             doc.id,
                             doc.getString(Constants.NAME)!!,
                             doc.getString(Constants.TYPE_IDENTIFIER)!!,
                             doc.getDouble(Constants.NUMBER_IDENTIFIER)!!.toInt(),
-                            listLocation
+                            listLocation,
+                            listProducts
                         )
                         customers.add(customer)
                     }
