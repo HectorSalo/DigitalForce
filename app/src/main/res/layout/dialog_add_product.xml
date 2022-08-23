@@ -28,12 +28,12 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/tf_price"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/iv_pdf"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tf_name">
 
@@ -42,8 +42,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/text_price"
-            android:text="@string/text_price_init"
-            android:inputType="numberDecimal" />
+            android:inputType="numberDecimal"
+            android:text="@string/text_price_init" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <ImageView
@@ -84,6 +84,20 @@
         app:layout_constraintTop_toBottomOf="@+id/progressBar"
         android:gravity="center"
         android:visibility="gone"/>
+
+    <ImageButton
+        android:id="@+id/iv_pdf"
+        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/app_name"
+        app:layout_constraintBottom_toBottomOf="@+id/tf_price"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_name"
+        tools:srcCompat="@drawable/ic_upload_pdf_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

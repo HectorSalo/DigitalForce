@@ -21,6 +21,10 @@ class CatalogViewModel : ViewModel() {
         CatalogRepository.deleteImage(image)
     }
 
+    fun uploadPdf(uri: Uri): LiveData<String> {
+        return CatalogRepository.uploadBrochure(uri).asLiveData()
+    }
+
     fun saveProduct(product: Product) {
         CatalogRepository.saveProduct(product)
     }

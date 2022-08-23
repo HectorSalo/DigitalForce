@@ -37,6 +37,7 @@ class AddProductDialog: DialogFragment(), TextWatcher {
     private lateinit var buttonPositive: Button
     private lateinit var buttonNegative: Button
     private var image: String? = null
+    private var pdf: String? = null
     private lateinit var name: String
     private var price = 0.0
     private val products = mutableListOf<Product>()
@@ -52,6 +53,13 @@ class AddProductDialog: DialogFragment(), TextWatcher {
     private val requestIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             showImage(result.data!!)
+        }
+    }
+
+    private val requestIntentPdf = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            pdf = result.data!!.dataString
+            savePdf()
         }
     }
 
@@ -83,6 +91,7 @@ class AddProductDialog: DialogFragment(), TextWatcher {
         buttonPositive.setOnClickListener { validateData() }
 
         binding.ivImage.setOnClickListener { requestPermission() }
+        binding.ivPdf.setOnClickListener { uploadPdf() }
         return dialog
     }
 
@@ -189,6 +198,12 @@ class AddProductDialog: DialogFragment(), TextWatcher {
         }
     }
 
+    private fun uploadPdf() {
+        val intent = Intent().setAction(Intent.ACTION_GET_CONTENT)
+        intent.type = "application/pdf"
+        requestIntentPdf.launch(intent)
+    }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
@@ -213,6 +228,31 @@ class AddProductDialog: DialogFragment(), TextWatcher {
             binding.etPrice.setText(cadena)
             binding.etPrice.setSelection(cadena.length)
             binding.etPrice.addTextChangedListener(this)
+        }
+    }
+
+    private fun savePdf() {
+        viewModel.uploadPdf(Uri.parse(pdf)).observe(this.requireActivity()) {
+            if (_binding != null) {
+                if (it.equals(getString(R.string.error_data))) {
+                    binding.progressBar.visibility = View.GONE
+                    binding.tvProgress.visibility = View.GONE
+                    buttonNegative.isEnabled = false
+                    buttonPositive.isEnabled = false
+                    binding.ivImage.setOnClickListener { requestPermission() }
+                    dialog?.setCancelable(true)
+                    Toast.makeText(requireContext(), getString(R.string.error_upload_image), Toast.LENGTH_LONG).show()
+                } else {
+                    if (it.contains("https")) {
+                        pdf = it
+                        //saveProduct()
+                    } else {
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.tvProgress.visibility = View.VISIBLE
+                        binding.tvProgress.text = getString(R.string.text_progress_load_image, it)
+                    }
+                }
+            }
         }
     }
 }

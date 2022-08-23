@@ -117,8 +117,8 @@ class AddCustomerDialog: DialogFragment() {
         locations.add(location)
 
         Classes.close(binding.root)
-        val customer = Customer("", name, identifier, rif.toInt(), locations)
-        viewModel.addCustomer(customer)
+        /*val customer = Customer("", name, identifier, rif.toInt(), locations)
+        viewModel.addCustomer(customer)*/
         dialog?.dismiss()
     }
 }

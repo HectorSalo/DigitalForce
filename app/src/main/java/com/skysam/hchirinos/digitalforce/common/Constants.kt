@@ -18,6 +18,8 @@ object Constants {
 
     const val CATALOG = "catalog"
     const val CATALOG_DEMO = "catalogDemo"
+    const val BROCHURE = "brochure"
+    const val BROCHURE_DEMO = "brochureDemo"
     const val PRICE = "price"
     const val QUANTITY = "quantity"
     const val IMAGE = "image"

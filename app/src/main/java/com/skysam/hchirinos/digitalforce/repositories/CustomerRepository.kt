@@ -54,7 +54,7 @@ object CustomerRepository {
                             listLocation = doc.get(Constants.LOCATIONS) as MutableList<String>
                         }
                         var listProducts = mutableListOf<Product>()
-                        if (doc.get(Constants.LOCATIONS) != null) {
+                        if (doc.get(Constants.PRODUCTS) != null) {
                             @Suppress("UNCHECKED_CAST")
                             listProducts = doc.get(Constants.PRODUCTS) as MutableList<Product>
                         }

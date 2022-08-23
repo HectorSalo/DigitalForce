@@ -20,13 +20,17 @@ import java.util.*
 /**
  * Created by Hector Chirinos on 05/06/2022.
  */
-
-
 object CatalogRepository {
- private val PATH = when(Classes.getEnviroment()) {
+  private val PATH_IMAGE = when(Classes.getEnviroment()) {
   Constants.DEMO -> Constants.CATALOG_DEMO
   Constants.RELEASE -> Constants.CATALOG
   else -> Constants.CATALOG
+ }
+
+ private val PATH_BROCHURE = when(Classes.getEnviroment()) {
+  Constants.DEMO -> "${Constants.BROCHURE_DEMO}/"
+  Constants.RELEASE -> "${Constants.BROCHURE}/"
+  else -> "${Constants.BROCHURE}/"
  }
 
  private val PATH_STORAGE = when(Classes.getEnviroment()) {
@@ -36,11 +40,15 @@ object CatalogRepository {
  }
 
  private fun getInstance(): CollectionReference {
-  return FirebaseFirestore.getInstance().collection(PATH)
+  return FirebaseFirestore.getInstance().collection(PATH_IMAGE)
  }
 
  private fun getInstanceStorage(): StorageReference {
   return Firebase.storage.reference.child(PATH_STORAGE)
+ }
+
+ private fun getInstanceBrochure(): StorageReference {
+  return Firebase.storage.reference.child(PATH_BROCHURE)
  }
 
  fun getCatalog(): Flow<MutableList<Product>> {
@@ -109,6 +117,29 @@ object CatalogRepository {
  fun deleteImage(image: String) {
   val ref: StorageReference = Firebase.storage.getReferenceFromUrl(image)
   ref.delete()
+ }
+
+ fun uploadBrochure(uri: Uri): Flow<String> {
+  return callbackFlow {
+   getInstanceBrochure()
+    .child(uri.lastPathSegment!!)
+    .putFile(uri)
+    .addOnCompleteListener { task ->
+     if (task.isSuccessful) {
+      getInstanceBrochure().child(uri.lastPathSegment!!)
+       .downloadUrl.addOnSuccessListener {
+        trySend(it.toString())
+       }
+     } else {
+      trySend(DigitalForce.DigitalForce.getContext().getString(R.string.error_data))
+     }
+    }
+    .addOnProgressListener {
+     val progress = (100.0 * it.bytesTransferred) / it.totalByteCount
+     trySend(Classes.convertDoubleToString(progress))
+    }
+   awaitClose {  }
+  }
  }
 
  fun updateProduct(product: Product) {

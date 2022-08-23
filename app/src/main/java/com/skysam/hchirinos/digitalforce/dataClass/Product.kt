@@ -9,5 +9,6 @@ data class Product(
     var name: String,
     var price: Double = 1.0,
     var quantity: Int = 1,
-    var image: String
+    var image: String,
+    var pdf: String = ""
 )
