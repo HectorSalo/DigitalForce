@@ -135,9 +135,9 @@ class AddProductDialog: DialogFragment(), TextWatcher {
                 if (_binding != null) {
                     if (it.equals(getString(R.string.error_data))) {
                         binding.progressBar.visibility = View.GONE
-                        binding.tvProgress.visibility = View.GONE
-                        buttonNegative.isEnabled = false
-                        buttonPositive.isEnabled = false
+                        binding.tvProgressImage.visibility = View.GONE
+                        buttonNegative.isEnabled = true
+                        buttonPositive.isEnabled = true
                         binding.ivImage.setOnClickListener { requestPermission() }
                         dialog?.setCancelable(true)
                         Toast.makeText(requireContext(), getString(R.string.error_upload_image), Toast.LENGTH_LONG).show()
@@ -147,8 +147,8 @@ class AddProductDialog: DialogFragment(), TextWatcher {
                             saveProduct()
                         } else {
                             binding.progressBar.visibility = View.VISIBLE
-                            binding.tvProgress.visibility = View.VISIBLE
-                            binding.tvProgress.text = getString(R.string.text_progress_load_image, it)
+                            binding.tvProgressImage.visibility = View.VISIBLE
+                            binding.tvProgressImage.text = getString(R.string.text_progress_load, it)
                         }
                     }
                 }
@@ -164,7 +164,8 @@ class AddProductDialog: DialogFragment(), TextWatcher {
             "",
             name,
             price,
-            image = image!!
+            image = image!!,
+            pdf = pdf
         )
         viewModel.saveProduct(product)
         dismiss()
@@ -236,20 +237,28 @@ class AddProductDialog: DialogFragment(), TextWatcher {
             if (_binding != null) {
                 if (it.equals(getString(R.string.error_data))) {
                     binding.progressBar.visibility = View.GONE
-                    binding.tvProgress.visibility = View.GONE
-                    buttonNegative.isEnabled = false
-                    buttonPositive.isEnabled = false
+                    binding.tvProgressPdf.visibility = View.GONE
+                    buttonNegative.isEnabled = true
+                    buttonPositive.isEnabled = true
                     binding.ivImage.setOnClickListener { requestPermission() }
                     dialog?.setCancelable(true)
-                    Toast.makeText(requireContext(), getString(R.string.error_upload_image), Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(), getString(R.string.error_upload_pdf), Toast.LENGTH_LONG).show()
                 } else {
                     if (it.contains("https")) {
                         pdf = it
-                        //saveProduct()
+                        binding.progressBar.visibility = View.GONE
+                        binding.ivPdf.setImageResource(R.drawable.ic_file_check_24)
+                        binding.tvProgressPdf.text = getString(R.string.text_pdf_load)
+                        buttonPositive.isEnabled = true
+                        buttonNegative.isEnabled = true
+                        dialog?.setCancelable(true)
                     } else {
                         binding.progressBar.visibility = View.VISIBLE
-                        binding.tvProgress.visibility = View.VISIBLE
-                        binding.tvProgress.text = getString(R.string.text_progress_load_image, it)
+                        binding.tvProgressPdf.visibility = View.VISIBLE
+                        buttonPositive.isEnabled = false
+                        buttonNegative.isEnabled = false
+                        dialog?.setCancelable(false)
+                        binding.tvProgressPdf.text = getString(R.string.text_progress_load, it)
                     }
                 }
             }

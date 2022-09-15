@@ -46,6 +46,20 @@
             android:text="@string/text_price_init" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/tv_progress_pdf"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:gravity="center"
+        android:text="@string/text_progress_load"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tf_price" />
+
     <ImageView
         android:id="@+id/iv_image"
         android:layout_width="@dimen/size_image_dialog_add_product"
@@ -53,11 +67,11 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_add_a_photo_232"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_price"
-        android:src="@drawable/ic_add_a_photo_232"
-        android:contentDescription="@string/app_name" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_progress_pdf" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -72,13 +86,13 @@
         android:visibility="gone"/>
 
     <TextView
-        android:id="@+id/tv_progress"
+        android:id="@+id/tv_progress_image"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:text="@string/text_progress_load_image"
+        android:text="@string/text_progress_load"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar"
@@ -87,17 +101,15 @@
 
     <ImageButton
         android:id="@+id/iv_pdf"
-        style="@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
         android:contentDescription="@string/app_name"
         app:layout_constraintBottom_toBottomOf="@+id/tf_price"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tf_name"
-        tools:srcCompat="@drawable/ic_upload_pdf_24" />
+        app:layout_constraintTop_toTopOf="@+id/tf_price"
+        app:srcCompat="@drawable/ic_upload_pdf_24" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

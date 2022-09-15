@@ -96,7 +96,8 @@ class AddExpenseDialog: DialogFragment(), TextWatcher, OnClickExit, OnClickList 
                 val product = Product(
                     id = "",
                     nameSelected,
-                    image = ""
+                    image = "",
+                    pdf = null
                 )
                 binding.etProduct.setText("")
                 Classes.close(binding.root)

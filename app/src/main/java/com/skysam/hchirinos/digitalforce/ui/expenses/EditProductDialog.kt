@@ -116,7 +116,8 @@ class EditProductDialog(private val product: Product,
             product.name,
             priceTotal,
             quantityTotal,
-            product.image
+            product.image,
+            product.pdf
         )
         Classes.close(binding.root)
         viewModel.updateProduct(productResult, position)

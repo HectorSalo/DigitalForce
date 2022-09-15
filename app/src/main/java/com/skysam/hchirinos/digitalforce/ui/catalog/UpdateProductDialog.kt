@@ -38,6 +38,7 @@ class UpdateProductDialog: DialogFragment(), TextWatcher {
     private lateinit var buttonPositive: Button
     private lateinit var buttonNegative: Button
     private var image: String? = null
+    private var pdf: String? = null
     private lateinit var name: String
     private var price = 0.0
     private val products = mutableListOf<Product>()
@@ -54,6 +55,13 @@ class UpdateProductDialog: DialogFragment(), TextWatcher {
     private val requestIntentLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
         if (result.resultCode == Activity.RESULT_OK) {
             showImage(result.data!!)
+        }
+    }
+
+    private val requestIntentPdf = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+        if (result.resultCode == Activity.RESULT_OK) {
+            pdf = result.data!!.dataString
+            savePdf()
         }
     }
 
@@ -80,6 +88,12 @@ class UpdateProductDialog: DialogFragment(), TextWatcher {
                     .centerCrop()
                     .placeholder(R.drawable.ic_add_a_photo_232)
                     .into(binding.ivImage)
+                if (it.pdf != null) {
+                    pdf = it.pdf
+                    binding.ivPdf.setImageResource(R.drawable.ic_file_check_24)
+                    binding.tvProgressPdf.visibility = View.VISIBLE
+                    binding.tvProgressPdf.text = getString(R.string.text_pdf_load)
+                }
             }
         }
 
@@ -101,6 +115,7 @@ class UpdateProductDialog: DialogFragment(), TextWatcher {
         buttonPositive.setOnClickListener { validateData() }
 
         binding.ivImage.setOnClickListener { requestPermission() }
+        binding.ivPdf.setOnClickListener { uploadPdf() }
         return dialog
     }
 
@@ -144,7 +159,7 @@ class UpdateProductDialog: DialogFragment(), TextWatcher {
                 if (_binding != null) {
                     if (it.equals(getString(R.string.error_data))) {
                         binding.progressBar.visibility = View.GONE
-                        binding.tvProgress.visibility = View.GONE
+                        binding.tvProgressImage.visibility = View.GONE
                         buttonNegative.isEnabled = false
                         buttonPositive.isEnabled = false
                         binding.ivImage.setOnClickListener { requestPermission() }
@@ -157,8 +172,8 @@ class UpdateProductDialog: DialogFragment(), TextWatcher {
                             updateProduct()
                         } else {
                             binding.progressBar.visibility = View.VISIBLE
-                            binding.tvProgress.visibility = View.VISIBLE
-                            binding.tvProgress.text = getString(R.string.text_progress_load_image, it)
+                            binding.tvProgressImage.visibility = View.VISIBLE
+                            binding.tvProgressImage.text = getString(R.string.text_progress_load, it)
                         }
                     }
                 }
@@ -169,12 +184,14 @@ class UpdateProductDialog: DialogFragment(), TextWatcher {
     }
 
     private fun updateProduct() {
-        if (name != product.name || image != product.image || price != product.price) {
+        if (name != product.name || image != product.image ||
+            price != product.price || pdf != product.pdf) {
             val product = Product(
                 product.id,
                 name,
                 price,
-                image = image!!
+                image = image!!,
+                pdf = pdf
             )
             viewModel.updateProduct(product)
         }
@@ -206,6 +223,45 @@ class UpdateProductDialog: DialogFragment(), TextWatcher {
 
         if (bitmap != null) {
             binding.ivImage.setImageBitmap(bitmap)
+        }
+    }
+
+    private fun uploadPdf() {
+        val intent = Intent().setAction(Intent.ACTION_GET_CONTENT)
+        intent.type = "application/pdf"
+        requestIntentPdf.launch(intent)
+    }
+
+    private fun savePdf() {
+        viewModel.uploadPdf(Uri.parse(pdf)).observe(this.requireActivity()) {
+            if (_binding != null) {
+                if (it.equals(getString(R.string.error_data))) {
+                    binding.progressBar.visibility = View.GONE
+                    binding.tvProgressPdf.visibility = View.GONE
+                    buttonNegative.isEnabled = true
+                    buttonPositive.isEnabled = true
+                    binding.ivImage.setOnClickListener { requestPermission() }
+                    dialog?.setCancelable(true)
+                    Toast.makeText(requireContext(), getString(R.string.error_upload_pdf), Toast.LENGTH_LONG).show()
+                } else {
+                    if (it.contains("https")) {
+                        pdf = it
+                        binding.progressBar.visibility = View.GONE
+                        binding.ivPdf.setImageResource(R.drawable.ic_file_check_24)
+                        binding.tvProgressPdf.text = getString(R.string.text_pdf_load)
+                        buttonPositive.isEnabled = true
+                        buttonNegative.isEnabled = true
+                        dialog?.setCancelable(true)
+                    } else {
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.tvProgressPdf.visibility = View.VISIBLE
+                        buttonPositive.isEnabled = false
+                        buttonNegative.isEnabled = false
+                        dialog?.setCancelable(false)
+                        binding.tvProgressPdf.text = getString(R.string.text_progress_load, it)
+                    }
+                }
+            }
         }
     }
 

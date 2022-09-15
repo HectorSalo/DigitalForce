@@ -36,6 +36,7 @@
     <string name="symbol_bolivar">Bs.</string>
     <string name="symbol_dolar">$</string>
     <string name="text_go">Ir</string>
+    <string name="text_share">Compartir</string>
 
     <!--Dialogs Common-->
     <string name="title_confirmation_dialog">Confirmar</string>
@@ -72,19 +73,22 @@
 
     <!--Catalog-->
     <string name="text_product">Producto</string>
-    <string name="text_price">Precio</string>
+    <string name="text_price">Precio ($)</string>
     <string name="text_sell">Vender</string>
-    <string name="text_share">Compartir</string>
+    <string name="text_share_pdf">Compartir PDF</string>
     <string name="list_catalog_empty">Sin Productos en el Catálogo</string>
     <string name="title_add_producto_dialog">Crear producto</string>
     <string name="title_edit_producto_dialog">Editar %1$s</string>
     <string name="error_name_exists">Nombre existente</string>
-    <string name="text_progress_load_image">Cargando imagen %1$s</string>
+    <string name="text_progress_load">Cargando %1$s</string>
     <string name="error_upload_image">Error al subir imagen</string>
     <string name="txt_error_permiso_lectura">Error de permisos de lectura</string>
     <string name="error_image_notfound">Imagen/archivo no encontrado.</string>
     <string name="error_price_zero">Precio debe ser mayor a cero</string>
     <string name="title_share_dialog">Compartir con</string>
+    <string name="text_pdf_load">PDF cargado</string>
+    <string name="error_upload_pdf">Error al subir PDF</string>
+    <string name="text_price_symbol">($) %1$s</string>
 
     <!--Expense-->
     <string name="list_expense_empty">No ha realizado su primera Compra</string>

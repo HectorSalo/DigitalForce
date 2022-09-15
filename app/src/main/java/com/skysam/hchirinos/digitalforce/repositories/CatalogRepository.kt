@@ -67,7 +67,8 @@ object CatalogRepository {
        doc.id,
        doc.getString(Constants.NAME)!!,
        doc.getDouble(Constants.PRICE)!!,
-       image = doc.getString(Constants.IMAGE)!!
+       image = doc.getString(Constants.IMAGE)!!,
+       pdf = doc.getString(Constants.PDF)
       )
       products.add(product)
      }
@@ -86,7 +87,8 @@ object CatalogRepository {
    },
    Constants.PRICE to product.price,
    Constants.QUANTITY to product.quantity,
-   Constants.IMAGE to product.image
+   Constants.IMAGE to product.image,
+   Constants.PDF to product.pdf
   )
   getInstance().add(data)
  }

@@ -23,6 +23,7 @@ object Constants {
     const val PRICE = "price"
     const val QUANTITY = "quantity"
     const val IMAGE = "image"
+    const val PDF = "pdf"
 
     const val EXPENSES = "expenses"
     const val EXPENSES_DEMO = "expensesDemo"

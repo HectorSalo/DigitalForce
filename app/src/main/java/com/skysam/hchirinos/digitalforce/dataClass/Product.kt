@@ -10,5 +10,5 @@ data class Product(
     var price: Double = 1.0,
     var quantity: Int = 1,
     var image: String,
-    var pdf: String = ""
+    var pdf: String?
 )

@@ -50,7 +50,8 @@ object ExpensesRepository {
                                     prod[Constants.NAME].toString(),
                                     prod[Constants.PRICE].toString().toDouble(),
                                     prod[Constants.QUANTITY].toString().toInt(),
-                                    ""
+                                    "",
+                                    null
                                 )
                                 listProducts.add(product)
                             }
