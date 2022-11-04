@@ -1,5 +1,6 @@
 package com.skysam.hchirinos.digitalforce.ui.expenses
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -118,6 +119,7 @@ class AddExpenseDialog: DialogFragment(), TextWatcher, OnClickExit, OnClickList 
         _binding = null
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun loadViewModel() {
         viewModel.valueWeb.observe(viewLifecycleOwner) {
             if (_binding != null) {

@@ -61,6 +61,11 @@ object Classes {
         return String.format(Locale.GERMANY, "%,.2f", value)
     }
 
+    fun convertStringToDoublePrice(value: String): Double {
+        val number = value.replace(".", "").replace(",", ".")
+        return number.toDouble()
+    }
+
     fun close(view: View) {
         val imn = DigitalForce.DigitalForce.getContext().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
         imn.hideSoftInputFromWindow(view.windowToken, 0)
