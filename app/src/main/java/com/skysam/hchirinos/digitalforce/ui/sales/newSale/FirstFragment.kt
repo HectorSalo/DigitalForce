@@ -22,6 +22,7 @@ import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.dataClass.Customer
 import com.skysam.hchirinos.digitalforce.dataClass.Product
+import com.skysam.hchirinos.digitalforce.dataClass.Sale
 import com.skysam.hchirinos.digitalforce.databinding.FragmentNewSaleFirstBinding
 import com.skysam.hchirinos.digitalforce.ui.common.ExitDialog
 import com.skysam.hchirinos.digitalforce.ui.common.OnClickExit
@@ -64,7 +65,7 @@ class FirstFragment : Fragment(), OnClickExit, TextWatcher, OnClick {
         binding.etProduct.doAfterTextChanged { binding.tfProduct.error = null }
         binding.etPrice.doAfterTextChanged { binding.tfPrice.error = null }
 
-        adapterItem = NewSaleAdapter(productsInList, this)
+        adapterItem = NewSaleAdapter(productsInList, this, true)
         binding.rvList.apply {
             setHasFixedSize(true)
             adapter = adapterItem
@@ -93,9 +94,7 @@ class FirstFragment : Fragment(), OnClickExit, TextWatcher, OnClick {
         binding.btnAdd.setOnClickListener { addProduct() }
         binding.btnExit.setOnClickListener { getOut() }
         binding.etDate.setOnClickListener { selecDate() }
-        binding.btnTotal.setOnClickListener {
-            findNavController().navigate(R.id.action_First2Fragment_to_Second2Fragment)
-        }
+        binding.btnTotal.setOnClickListener { validateData() }
 
         loadViewModel()
     }
@@ -225,8 +224,40 @@ class FirstFragment : Fragment(), OnClickExit, TextWatcher, OnClick {
             binding.etProduct.setText("")
             binding.etQuantity.setText(getString(R.string.text_quantity_init))
             binding.etPrice.setText(getString(R.string.text_price_init))
+            binding.etProduct.requestFocus()
             Classes.close(binding.root)
             viewModel.addProductInList(product)
         }
+    }
+
+    private fun validateData() {
+        if (binding.spCustomer.selectedItemPosition == 0) {
+            Toast.makeText(requireContext(), getString(R.string.error_without_customer), Toast.LENGTH_SHORT).show()
+            return
+        }
+        if (productsInList.isEmpty()) {
+            Toast.makeText(requireContext(), getString(R.string.error_without_products), Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val invoice = if (binding.etInvoice.text.toString().isEmpty()) 0
+        else binding.etInvoice.text.toString().toInt()
+
+        var total = 0.0
+        for (pro in productsInList) {
+            total += (pro.price * pro.quantity)
+        }
+
+        val sale = Sale(
+            "",
+            binding.spCustomer.selectedItem.toString(),
+            binding.spLocation.selectedItem.toString(),
+            invoice,
+            productsInList,
+            total,
+            dateSelected
+        )
+        viewModel.sendSale(sale)
+        findNavController().navigate(R.id.action_First2Fragment_to_Second2Fragment)
     }
 }

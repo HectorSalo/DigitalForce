@@ -53,8 +53,15 @@
     <string name="text_not_expense">No ha realizado compras</string>
 
     <!--Sales-->
+    <string name="list_sale_empty">No ha realizado su primera Venta</string>
     <string name="text_invoice_number">#Fact.</string>
     <string name="text_quantity_init">1</string>
+    <string name="error_without_customer">Debe seleccionar Cliente</string>
+    <string name="error_without_products">Debe agregar al menos un Producto</string>
+    <string name="text_subtitle_details">Resumen de Ventas</string>
+    <string name="btn_sale">Generar Factura</string>
+    <string name="title_iva_dolar">IVA 16% ($)</string>
+    <string name="text_invoice_item">#Fact. asociada: %1$s</string>
 
     <!--Customers-->
     <string name="list_customer_empty">No ha creado su primer Cliente</string>

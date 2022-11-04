@@ -15,7 +15,7 @@ import com.skysam.hchirinos.digitalforce.dataClass.Product
  * Created by Hector Chirinos on 03/11/2022.
  */
 
-class NewSaleAdapter(private val products: MutableList<Product>, private val onClick: OnClick):
+class NewSaleAdapter(private val products: MutableList<Product>, private val onClick: OnClick, private val isEditable: Boolean):
  RecyclerView.Adapter<NewSaleAdapter.ViewHolder>() {
  lateinit var context: Context
 
@@ -34,6 +34,8 @@ class NewSaleAdapter(private val products: MutableList<Product>, private val onC
   )
   holder.priceQuantity.text = convertDoubleToString(item.price * item.quantity)
   holder.buttonDelete.setOnClickListener { onClick.delete(item) }
+
+  if (!isEditable) holder.buttonDelete.visibility = View.GONE
  }
 
  override fun getItemCount(): Int = products.size
