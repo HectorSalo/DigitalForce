@@ -145,14 +145,15 @@ object CatalogRepository {
  }
 
  fun updateProduct(product: Product) {
-  val data: Map<String, Any> = hashMapOf(
+  val data: Map<String, Any?> = hashMapOf(
    Constants.NAME to product.name.replaceFirstChar {
     if (it.isLowerCase()) it.titlecase(
      Locale.getDefault()
     ) else it.toString()
    },
    Constants.PRICE to product.price,
-   Constants.IMAGE to product.image
+   Constants.IMAGE to product.image,
+   Constants.PDF to product.pdf
   )
   getInstance()
    .document(product.id)

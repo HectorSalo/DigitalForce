@@ -100,7 +100,6 @@ class CatalogAdapter(private val products: MutableList<Product>, private val onC
             refurl.getFile(localFile).addOnSuccessListener {
                 val intent = Intent(Intent.ACTION_SEND)
                 intent.type = "application/pdf"
-                val test = localFile.toString()
                 intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(localFile))
                 context.startActivity(Intent.createChooser(intent, context.getString(R.string.title_share_dialog)))
             }.addOnFailureListener {

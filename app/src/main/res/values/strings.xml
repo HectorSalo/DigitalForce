@@ -52,6 +52,10 @@
     <string name="text_number_expenses">Ha realizado %1$s compras</string>
     <string name="text_not_expense">No ha realizado compras</string>
 
+    <!--Sales-->
+    <string name="text_invoice_number">#Fact.</string>
+    <string name="text_quantity_init">1</string>
+
     <!--Customers-->
     <string name="list_customer_empty">No ha creado su primer Cliente</string>
     <string name="title_add_customer">Agregar cliente</string>
@@ -111,5 +115,6 @@
     <string name="text_email_user">Correo electrónico</string>
     <string name="text_password">Contraseña</string>
     <string name="btn_init_session">Iniciar Sesión</string>
+    <string name="title_activity_new_sale">NewSaleActivity</string>
 
 </resources>
