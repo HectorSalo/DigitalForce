@@ -20,6 +20,9 @@ class SalesViewModel : ViewModel() {
     private val _saleToSend = MutableLiveData<Sale>()
     val saleToSend: LiveData<Sale> get() = _saleToSend
 
+    private val _saleToView = MutableLiveData<Sale>()
+    val saleToView: LiveData<Sale> get() = _saleToView
+
     fun addProductInList(product: Product) {
         _productsInList.value?.add(product)
         _productsInList.value = _productsInList.value
@@ -40,5 +43,9 @@ class SalesViewModel : ViewModel() {
 
     fun deleteSale(sale: Sale) {
         SaleRepository.deleteSale(sale)
+    }
+
+    fun viewSale(sale: Sale) {
+        _saleToView.value = sale
     }
 }

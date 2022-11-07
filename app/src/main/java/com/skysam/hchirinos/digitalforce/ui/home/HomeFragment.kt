@@ -5,8 +5,6 @@ import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.NavHostFragment
 import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.databinding.FragmentHomeBinding
 import com.skysam.hchirinos.digitalforce.ui.settings.SettingsActivity
@@ -44,6 +42,16 @@ class HomeFragment : Fragment() {
                     binding.tvExpense.text = getString(R.string.text_number_expenses, it.size.toString())
                 } else {
                     binding.tvExpense.text = getString(R.string.text_not_expense)
+                }
+            }
+        }
+
+        viewModel.sales.observe(viewLifecycleOwner) {
+            if (_binding != null) {
+                if (it.isNotEmpty()) {
+                    binding.tvSale.text = getString(R.string.text_number_sales, it.size.toString())
+                } else {
+                    binding.tvSale.text = getString(R.string.text_not_sales)
                 }
             }
         }

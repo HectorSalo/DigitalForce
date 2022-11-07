@@ -51,6 +51,8 @@
     <string name="text_customer">Cliente</string>
     <string name="text_number_expenses">Ha realizado %1$s compras</string>
     <string name="text_not_expense">No ha realizado compras</string>
+    <string name="text_number_sales">Ha realizado %1$s ventas</string>
+    <string name="text_not_sales">No ha realizado ventas</string>
 
     <!--Sales-->
     <string name="list_sale_empty">No ha realizado su primera Venta</string>

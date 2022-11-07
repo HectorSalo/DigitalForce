@@ -1,5 +1,6 @@
 package com.skysam.hchirinos.digitalforce.ui.expenses
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -54,6 +55,7 @@ class ExpensesFragment : Fragment(), OnClick {
         loadViewModel()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     private fun loadViewModel() {
         viewModel.expenses.observe(viewLifecycleOwner) {
             if (_binding != null) {
