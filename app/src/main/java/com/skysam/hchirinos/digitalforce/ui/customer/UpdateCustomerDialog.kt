@@ -135,8 +135,8 @@ class UpdateCustomerDialog: DialogFragment() {
         }
 
         Classes.close(binding.root)
-        /*val customer1 = Customer(customer.id, name, identifier, rif.toInt(), customer.locations)
-        viewModel.updateCustomer(customer1)*/
+        val customer1 = Customer(customer.id, name, identifier, rif.toInt(), customer.locations, customer.products)
+        viewModel.updateCustomer(customer1)
         dialog?.dismiss()
     }
 }

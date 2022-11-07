@@ -10,7 +10,9 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import com.skysam.hchirinos.digitalforce.R
+import com.skysam.hchirinos.digitalforce.dataClass.Customer
 import com.skysam.hchirinos.digitalforce.dataClass.Sale
 import com.skysam.hchirinos.digitalforce.databinding.FragmentSalesBinding
 import com.skysam.hchirinos.digitalforce.ui.sales.newSale.NewSaleActivity
@@ -20,6 +22,7 @@ class SalesFragment : Fragment(), OnClick {
     private var _binding: FragmentSalesBinding? = null
     private val binding get() = _binding!!
     private val sales = mutableListOf<Sale>()
+    private val customers = mutableListOf<Customer>()
     private val viewModel: SalesViewModel by activityViewModels()
     private lateinit var saleAdapter: SaleAdapter
 
@@ -52,7 +55,11 @@ class SalesFragment : Fragment(), OnClick {
         }
 
         binding.fab.setOnClickListener {
-            startActivity(Intent(requireContext(), NewSaleActivity::class.java))
+            if (customers.isNotEmpty()) {
+                startActivity(Intent(requireContext(), NewSaleActivity::class.java))
+            } else {
+                Snackbar.make(binding.root, "Debe crear un Cliente", Snackbar.LENGTH_SHORT).show()
+            }
         }
 
         loadViewModels()
@@ -80,6 +87,12 @@ class SalesFragment : Fragment(), OnClick {
                  }
              }
          }
+        viewModel.customers.observe(viewLifecycleOwner) {
+            if (_binding != null) {
+                customers.clear()
+                customers.addAll(it)
+            }
+        }
     }
 
     override fun view(sale: Sale) {
