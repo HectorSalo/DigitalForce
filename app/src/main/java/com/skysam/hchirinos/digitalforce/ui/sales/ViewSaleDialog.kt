@@ -54,6 +54,8 @@ class ViewSaleDialog: DialogFragment() {
 
     private fun loadData() {
         binding.tvDate.text = DateFormat.getDateInstance().format(sale.date)
+        if (sale.invoice > 0) binding.tvInvoice.text = getString(R.string.text_invoice_item,
+            sale.invoice.toString()) else binding.tvInvoice.visibility = View.GONE
         if (sale.rate > 0) {
             binding.tvRate.text = getString(
                 R.string.text_rate_view,

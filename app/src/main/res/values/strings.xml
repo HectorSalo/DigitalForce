@@ -126,4 +126,14 @@
     <string name="btn_init_session">Iniciar Sesión</string>
     <string name="title_activity_new_sale">NewSaleActivity</string>
 
+    <!-- Stats -->
+    <string name="chip_week">Rango de Fecha</string>
+    <string name="chip_month">Mensual</string>
+    <string name="text_date_range">%1$s - %2$s</string>
+    <string name="text_total_graph_zero">Balance en cero en este período</string>
+    <string name="text_total_graph_superavit">Tiene un superávit en este período de:\n$ %1$s</string>
+    <string name="text_total_graph_deficit">Tiene un déficit en este período de:\n$ %1$s</string>
+    <string name="text_amount_add_graph">+ %1$s</string>
+    <string name="text_amount_rest_graph">- %1$s</string>
+
 </resources>

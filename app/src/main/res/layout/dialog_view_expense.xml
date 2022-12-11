@@ -31,7 +31,7 @@
         tools:text="@string/text_date" />
 
     <TextView
-        android:id="@+id/tv_rate"
+        android:id="@+id/tv_invoice"
         style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -40,6 +40,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_date"
+        tools:text="@string/text_invoice_item" />
+
+    <TextView
+        android:id="@+id/tv_rate"
+        style="@style/TextAppearance.AppCompat.SearchResult.Subtitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_invoice"
         tools:text="@string/text_rate" />
 
     <androidx.recyclerview.widget.RecyclerView
