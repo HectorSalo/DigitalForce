@@ -12,12 +12,12 @@ import com.google.android.material.snackbar.Snackbar
 import com.skysam.hchirinos.digitalforce.MainActivity
 import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.common.Classes
-import com.skysam.hchirinos.digitalforce.databinding.FragmentFirstBinding
+import com.skysam.hchirinos.digitalforce.databinding.FragmentFirstInitBinding
 import com.skysam.hchirinos.digitalforce.repositories.InitSession
 
 class FirstFragment : Fragment() {
 
-    private var _binding: FragmentFirstBinding? = null
+    private var _binding: FragmentFirstInitBinding? = null
     private val binding get() = _binding!!
     private val viewModel: LoginViewModel by activityViewModels()
 
@@ -25,7 +25,7 @@ class FirstFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentFirstBinding.inflate(inflater, container, false)
+        _binding = FragmentFirstInitBinding.inflate(inflater, container, false)
         return binding.root
 
     }

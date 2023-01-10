@@ -70,7 +70,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:gravity="center"
-        android:text="@string/text_subtitle_details"
+        android:text="@string/text_subtitle_sales"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

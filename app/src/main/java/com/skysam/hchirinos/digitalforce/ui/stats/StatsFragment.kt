@@ -19,6 +19,7 @@ import com.skysam.hchirinos.digitalforce.R
 import com.skysam.hchirinos.digitalforce.common.Classes
 import com.skysam.hchirinos.digitalforce.dataClass.Expense
 import com.skysam.hchirinos.digitalforce.dataClass.Sale
+import com.skysam.hchirinos.digitalforce.dataClass.Service
 import com.skysam.hchirinos.digitalforce.databinding.FragmentStatsBinding
 import java.util.*
 
@@ -29,6 +30,7 @@ class StatsFragment : Fragment() {
     private val viewModel: StatsViewModel by activityViewModels()
     private val sales = mutableListOf<Sale>()
     private val expenses = mutableListOf<Expense>()
+    private val services = mutableListOf<Service>()
     private var isByRange = true
     private var monthSelected = 0
     private var yearSelected = 0
@@ -170,6 +172,13 @@ class StatsFragment : Fragment() {
                 loadStats()
             }
         }
+        viewModel.services.observe(viewLifecycleOwner) {
+            if (_binding != null){
+                services.clear()
+                services.addAll(it)
+                loadStats()
+            }
+        }
     }
 
     private fun loadStats() {
@@ -201,14 +210,29 @@ class StatsFragment : Fragment() {
                 }
             }
         }
+        var totalServices = 0.0
+        for (service in services) {
+            if (isByRange) {
+                if (service.date.after(dateStart) && service.date.before(dateFinal)) {
+                    totalServices += service.total
+                }
+            } else {
+                val calendar = Calendar.getInstance()
+                calendar.time = service.date
+                if (calendar[Calendar.MONTH] == monthSelected && calendar[Calendar.YEAR] == yearSelected) {
+                    totalServices += service.total
+                }
+            }
+        }
 
         binding.tvSale.text = getString(R.string.text_amount_add_graph,
             Classes.convertDoubleToString(totalSales))
-
+        binding.tvService.text = getString(R.string.text_amount_add_graph,
+            Classes.convertDoubleToString(totalServices))
         binding.tvExpense.text = getString(R.string.text_amount_rest_graph,
             Classes.convertDoubleToString(totalExpenses))
 
-        val total = totalSales - totalExpenses
+        val total = totalSales + totalServices - totalExpenses
         if (total > 0.0) {
             binding.tvTotal.text = getString(R.string.text_total_graph_superavit,
                 Classes.convertDoubleToString(total))

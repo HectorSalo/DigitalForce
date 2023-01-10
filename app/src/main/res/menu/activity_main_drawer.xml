@@ -19,8 +19,7 @@
                 <item
                     android:id="@+id/nav_services"
                     android:icon="@drawable/ic_service_24"
-                    android:title="@string/drawer_services"
-                    android:visible="false"/>
+                    android:title="@string/drawer_services"/>
             </menu>
         </item>
     </group>

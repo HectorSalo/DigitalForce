@@ -34,4 +34,8 @@ object Constants {
     const val SALES = "sales"
     const val SALES_DEMO = "salesDemo"
     const val INVOICE = "invoice"
+
+    const val SERVICES = "services"
+    const val SERVICES_DEMO = "servicesDemo"
+    const val WORKS = "works"
 }

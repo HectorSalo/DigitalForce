@@ -49,10 +49,12 @@
     <string name="text_service">Servicio</string>
     <string name="text_expense">Compra</string>
     <string name="text_customer">Cliente</string>
-    <string name="text_number_expenses">Ha realizado %1$s compras</string>
-    <string name="text_not_expense">No ha realizado compras</string>
-    <string name="text_number_sales">Ha realizado %1$s ventas</string>
-    <string name="text_not_sales">No ha realizado ventas</string>
+    <string name="text_number_expenses">Ha realizado %1$s compra(s) este mes</string>
+    <string name="text_not_expense">No ha realizado compras este mes</string>
+    <string name="text_number_sales">Ha realizado %1$s venta(s) este mes</string>
+    <string name="text_not_sales">No ha realizado ventas este mes</string>
+    <string name="text_number_services">Ha realizado %1$s servicio(s) este mes</string>
+    <string name="text_not_services">No ha realizado servicios este mes</string>
 
     <!--Sales-->
     <string name="list_sale_empty">No ha realizado su primera Venta</string>
@@ -60,10 +62,14 @@
     <string name="text_quantity_init">1</string>
     <string name="error_without_customer">Debe seleccionar Cliente</string>
     <string name="error_without_products">Debe agregar al menos un Producto</string>
-    <string name="text_subtitle_details">Resumen de Ventas</string>
+    <string name="text_subtitle_sales">Resumen de Ventas</string>
     <string name="btn_sale">Generar Factura</string>
     <string name="title_iva_dolar">IVA 16% ($)</string>
     <string name="text_invoice_item">#Fact. asociada: %1$s</string>
+
+    <!--Services-->
+    <string name="list_service_empty">No ha realizado su primer Servicio</string>
+    <string name="text_subtitle_services">Resumen del Servicio</string>
 
     <!--Customers-->
     <string name="list_customer_empty">No ha creado su primer Cliente</string>

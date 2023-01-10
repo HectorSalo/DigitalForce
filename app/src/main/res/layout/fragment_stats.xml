@@ -126,8 +126,7 @@
             android:layout_marginEnd="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linear0"
-            android:visibility="gone">
+            app:layout_constraintTop_toBottomOf="@+id/linear0">
 
             <TextView
                 style="@style/TextAppearance.AppCompat.Medium"
@@ -137,7 +136,7 @@
                 android:text="@string/text_service" />
 
             <TextView
-                android:id="@+id/tv_sale_not_paid"
+                android:id="@+id/tv_service"
                 style="@style/TextAppearance.AppCompat.Medium"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

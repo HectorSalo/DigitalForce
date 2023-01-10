@@ -19,10 +19,14 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ui.services.newService.NewServiceActivity"
+            android:exported="false"
+            android:theme="@style/Theme.DigitalForce"/>
+        <activity
             android:name=".ui.sales.newSale.NewSaleActivity"
             android:exported="false"
             android:label="@string/title_activity_new_sale"
-            android:theme="@style/Theme.DigitalForce"/>
+            android:theme="@style/Theme.DigitalForce" />
         <activity
             android:name=".ui.init.LoginActivity"
             android:exported="true"
